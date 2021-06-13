@@ -23,6 +23,8 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
 
     <link href="{{ asset('backend') }}/assets/css/themify-icons.css" rel="stylesheet">
+    <!-- Custorm Style -->
+    <link href="{{ asset('backend') }}/assets/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -108,5 +110,7 @@
 
 <script src="{{ asset('backend') }}/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="{{ asset('backend') }}/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- Custrom Script -->
+<script src="{{ asset('backend') }}/assets/js/script.js" type="text/javascript"></script>
 
 </html>
