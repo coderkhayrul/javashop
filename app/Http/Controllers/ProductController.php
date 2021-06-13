@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -14,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $products = Product::all();
+        return view('admin.products.index',compact('products'));
     }
 
     /**
@@ -100,6 +102,13 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $imagePath = public_path('uploads/'.$product->image);
+
+        if(File::exists($imagePath)){
+            unlink($imagePath);
+            $product->delete();
+        }
+
+        return back()->withSuccess('Product deleted successfully');
     }
 }
