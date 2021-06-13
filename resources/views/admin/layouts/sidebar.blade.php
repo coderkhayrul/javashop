@@ -15,7 +15,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="{{ route('products.create') }}">
                     <i class="ti-archive"></i>
                     <p>Add Product</p>
                 </a>
