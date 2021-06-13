@@ -68,7 +68,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('admin.products.details', compact('product'));
     }
 
     /**
@@ -79,7 +79,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -91,7 +91,30 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'price' => 'required',
+            'description' => 'required'
+        ]);
+
+        if ($request->hasFile('image')) {
+
+            if (file_exists(public_path('uploads/'). $product->image)) {
+                unlink(public_path('uploads/'). $product->image);
+            }
+            $image = $request->image;
+            $image->move('uploads', $image->getClientOriginalName());
+
+            $product->image = $request->image->getClientOriginalName();
+        }
+        $product->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'image' => $product->image
+        ]);
+
+        return redirect()->route('products.index')->withSuccess('Product Update successfully');
     }
 
     /**

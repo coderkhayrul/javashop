@@ -39,11 +39,10 @@ View Products
                             <td>
                                 {{ Form::open(['route' => ['products.destroy', $product->id], 'method' => 'DELETE', ]) }}
                                 {{ Form::button('', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm ti-trash', 'onclick' => 'return confirm("Are you sure you want to delete?")']) }}
+                                {{ link_to_route('products.edit', '', $product->id, ['class' => 'btn btn-sm btn-info ti-pencil-alt']) }}
+                                {{ link_to_route('products.show', '', $product->id, ['class' => 'btn btn-sm btn-info ti-view-list-alt']) }}
                                 {{ Form::close() }}
 
-                                {{-- <button class="btn btn-sm btn-info ti-pencil-alt" title="Edit"></button>
-                                <button class="btn btn-sm btn-danger ti-trash" title="Delete"></button>
-                                <button class="btn btn-sm btn-primary ti-view-list-alt" title="Details"></button> --}}
                             </td>
                         </tr>
                         @endforeach
