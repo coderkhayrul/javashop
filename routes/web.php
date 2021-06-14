@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,6 @@ Route::resource('/products',ProductController::class);
 Route::resource('/orders',OrderController::class);
 Route::get('/confirm/{order}',[OrderController::class, 'confirm'])->name('order.confirm');
 Route::get('/pending/{order}',[OrderController::class, 'pending'])->name('order.pending');
+
+// User Route
+Route::resource('/users', UserController::class);
