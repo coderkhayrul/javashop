@@ -29,3 +29,9 @@ Route::get('/pending/{order}',[OrderController::class, 'pending'])->name('order.
 
 // User Route
 Route::resource('/users', UserController::class);
+
+
+// Admin Route List
+Route::get('/admin/login', function () {
+    return view('admin.login');
+});
