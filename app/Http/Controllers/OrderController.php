@@ -83,4 +83,21 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function confirm($order) {
+
+        $order = Order::findOrFail($order);
+        $order->status = 1;
+        $order->update();
+
+        return redirect()->route('orders.index')->withSuccess('Order Status Update successfully');
+    }
+
+    public function pending($order) {
+
+        $order = Order::findOrFail($order);
+        $order->status = 0;
+        $order->update();
+        return redirect()->route('orders.index')->withSuccess('Order Status Update successfully');
+    }
 }

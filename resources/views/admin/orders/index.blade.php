@@ -7,6 +7,9 @@ Products Order
 @section('content')
 <div class="row">
     <div class="col-md-12">
+        <!-- SESSION START -->
+        @include('admin.layouts.message')
+        <!-- SESSION END -->
         <div class="card">
             <div class="header">
                 <h4 class="title">Orders</h4>
@@ -26,54 +29,42 @@ Products Order
                     </tr>
                     </thead>
                     <tbody>
+                        @foreach ($orders as $order)
+                        <tr>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->user->name }}</td>
+                            <td>
+                                @foreach ($order->products as $item)
+                                    {{ $item->name }}
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach ($order->OrderItems as $item)
+                                    {{ $item->quantity }}
+                                @endforeach
+                            </td>
+                            <td>
+                                @if ($order->status == 1)
+                                <span class="label label-success">Confirmed</span>
+                                @else
+                                <span class="label label-warning">Pending</span>
+                                @endif
+                            </td>
+                            <td>
+                                {{-- <button class="btn btn-sm btn-success ti-close"
+                                        title="Cancel Order"></button> --}}
+                                        @if ($order->status == 1)
+                                            {{ link_to_route('order.pending', '', $order->id, ['class' => 'btn btn-sm btn-warning ti-close']) }}
+                                        @else
+                                            {{ link_to_route('order.confirm', '', $order->id, ['class' => 'btn btn-sm btn-success ti-check']) }}
+                                        @endif
+                                        {{ link_to_route('orders.show', '', $order->id, ['class' => 'btn btn-sm btn-primary ti-view-list-alt']) }}
 
-                    @foreach ($orders as $order)
-                    <tr>
-                        <td>{{ $order->id }}</td>
-                        <td>{{ $order->user->name }}</td>
-                        <td>
-                            @foreach ($order->products as $item)
-                                {{ $item->name }}
-                            @endforeach
-                        </td>
-                        <td>
-                            @foreach ($order->OrderItems as $item)
-                                {{ $item->quantity }}
-                            @endforeach
-                        </td>
-                        <td>
-                            @if ($order->status == 1)
-                            <span class="label label-success">Confirmed</span>
-                            @else
-                            <span class="label label-warning">Pending</span>
-                            @endif
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-success ti-close"
-                                    title="Cancel Order"></button>
-
-                            <button class="btn btn-sm btn-primary ti-view-list-alt"
-                                    title="Details"></button>
-                        </td>
-                    </tr>
-                    @endforeach
-
-                    {{-- <tr>
-                        <td>2</td>
-                        <td>Dakota</td>
-                        <td>Macbook pro</td>
-                        <td>1</td>
-                        <td>12/33,UK</td>
-                        <td><span class="label label-warning">Pending</span></td>
-                        <td>
-                            <button class="btn btn-sm btn-success ti-check"
-                                    title="Confirm Order"></button>
-
-                            <button class="btn btn-sm btn-primary ti-view-list-alt"
-                                    title="Details"></button>
-                        </td>
-                    </tr> --}}
-
+                                {{-- <button class="btn btn-sm btn-primary ti-view-list-alt"
+                                        title="Details"></button> --}}
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
 

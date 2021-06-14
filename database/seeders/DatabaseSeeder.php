@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => 1,
             'date' => Carbon::now(),
             'address' => '4AB Street 22 London UK',
-            'status' => 0
+            'status' => 1
         ]);
         \App\Models\Order::create([
             'user_id' => 2,

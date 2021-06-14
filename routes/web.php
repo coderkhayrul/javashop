@@ -20,5 +20,8 @@ Route::get('/',[DashboardController::class, 'index'])->name('dashboard.index');
 
 // Product Route
 Route::resource('/products',ProductController::class);
+
 // Order Route
 Route::resource('/orders',OrderController::class);
+Route::get('/confirm/{order}',[OrderController::class, 'confirm'])->name('order.confirm');
+Route::get('/pending/{order}',[OrderController::class, 'pending'])->name('order.pending');
