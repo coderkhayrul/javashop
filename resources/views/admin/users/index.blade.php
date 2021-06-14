@@ -21,7 +21,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Registered at</th>
-                            <th>Status</th>
+                            {{-- <th>Status</th> --}}
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -32,14 +32,15 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->created_at->diffForHumans() }}</td>
-                                <td>
+                                {{-- <td>
                                     <span class="label label-success">Active</span>
-                                </td>
+                                </td> --}}
                                 <td>
                                     <button class="btn btn-sm btn-success ti-close" title="Block User"></button>
 
-                                    <button class="btn btn-sm btn-primary ti-view-list-alt"
-                                            title="Details"></button>
+                                    {{-- <button class="btn btn-sm btn-primary ti-view-list-alt"
+                                            title="Details"></button> --}}
+                                    {{ link_to_route('users.show', '', $user->id, ['class' => 'btn btn-sm btn-primary ti-view-list-alt']) }}
                                 </td>
                             </tr>
                         @endforeach

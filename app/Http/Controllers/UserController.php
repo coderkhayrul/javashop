@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -47,7 +48,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $orders = Order::where('user_id', $id)->get();
+        return view('admin.users.details', compact('orders'));
     }
 
     /**
