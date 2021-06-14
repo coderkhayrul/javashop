@@ -39,12 +39,12 @@
 
                         <tr>
                             <th>Created At</th>
-                            <td>12 days ago</td>
+                            <td>{{ $product->created_at->diffForHumans() }}</td>
                         </tr>
 
                         <tr>
                             <th>Updated At</th>
-                            <td>5 days ago</td>
+                            <td>{{ $product->updated_at->diffForHumans() }}</td>
                         </tr>
 
                         <tr>

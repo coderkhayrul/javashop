@@ -99,7 +99,7 @@ class ProductController extends Controller
 
         if ($request->hasFile('image')) {
 
-            if (file_exists(public_path('uploads/'). $product->image)) {
+            if (file_exists(public_path('uploads/'). $product->image) != 'defult.jpg') {
                 unlink(public_path('uploads/'). $product->image);
             }
             $image = $request->image;
