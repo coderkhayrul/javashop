@@ -27,4 +27,8 @@ class AdminUserController extends Controller
         return redirect()->route('dashboard.index')->withSuccess('You have been authenticated');
 
     }
+
+    public function logout() {
+
+    }
 }

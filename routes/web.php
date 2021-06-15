@@ -18,26 +18,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 // ADMIN ROUTES
 Route::prefix('admin')->group(function(){
 
-    Route::get('/',[DashboardController::class, 'index'])->name('dashboard.index');
+    Route::middleware('auth:admin')->group(function(){
 
-    // Product Route
-    Route::resource('/products',ProductController::class);
-
-    // Order Route
-    Route::resource('/orders',OrderController::class);
-    Route::get('/confirm/{order}',[OrderController::class, 'confirm'])->name('order.confirm');
-    Route::get('/pending/{order}',[OrderController::class, 'pending'])->name('order.pending');
-
-    // User Route
-    Route::resource('/users', UserController::class);
-
+        Route::get('/',[DashboardController::class, 'index'])->name('dashboard.index');
+        // Product Route
+        Route::resource('/products',ProductController::class);
+        // Order Route
+        Route::resource('/orders',OrderController::class);
+        Route::get('/confirm/{order}',[OrderController::class, 'confirm'])->name('order.confirm');
+        Route::get('/pending/{order}',[OrderController::class, 'pending'])->name('order.pending');
+        // User Route
+        Route::resource('/users', UserController::class);
+        // Logout Route
+        // Route::get('/logout', [AdminUserController::class, 'logout']);
+    });
 
     // Admin Route List
-    Route::get('/login',[AdminUserController::class, 'index'])->name('login.index');
-    Route::post('/save',[AdminUserController::class, 'store'])->name('login.store');
+    Route::get('/login',[AdminUserController::class, 'index'])->name('login');
+    Route::post('/login',[AdminUserController::class, 'store'])->name('login.store');
 
 });

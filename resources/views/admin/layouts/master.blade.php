@@ -51,7 +51,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="ti-settings"></i>
-                                    <p>Account</p>
+                                    <p>{{ auth()->guard('admin')->check() ? auth()->guard()->user()->name: 'Account' }}</p>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
