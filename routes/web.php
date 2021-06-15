@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -32,6 +33,5 @@ Route::resource('/users', UserController::class);
 
 
 // Admin Route List
-Route::get('/admin/login', function () {
-    return view('admin.login');
-});
+Route::get('/admin/login',[AdminUserController::class, 'index'])->name('login.index');
+Route::post('/admin/save',[AdminUserController::class, 'store'])->name('login.store');

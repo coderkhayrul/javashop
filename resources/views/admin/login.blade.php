@@ -30,7 +30,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ route('dashboard.index') }}">
                     JavaShop Admin
                 </a>
             </div>
@@ -46,9 +46,16 @@
                         </div>
 
                         <div class="panel-body">
+                            @if ($errors->any())
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li class="text-danger">{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
 
-                            <form>
-
+                            <form action="{{ route('login.store') }}" method="post">
+                                @csrf
                                 <div class="form-group">
                                     <label for="email">Email:</label>
                                     <input type="email" name="email" id="email" placeholder="Email"
