@@ -39,6 +39,7 @@
     <div class="wrapper">
         <div class="container" style="margin-top: 50px">
             <div class="row">
+
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -53,6 +54,10 @@
                                     @endforeach
                                 </ul>
                             @endif
+
+                            <!-- SESSION MESSAGE -->
+                            @include('admin.layouts.message')
+                            <!-- SESSION MESSAGE -->
 
                             <form action="{{ route('login.store') }}" method="post">
                                 @csrf

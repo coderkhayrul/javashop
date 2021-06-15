@@ -33,7 +33,7 @@ Route::prefix('admin')->group(function(){
         // User Route
         Route::resource('/users', UserController::class);
         // Logout Route
-        // Route::get('/logout', [AdminUserController::class, 'logout']);
+        Route::get('/logout', [AdminUserController::class, 'logout'])->name('admin.logout');
     });
 
     // Admin Route List
