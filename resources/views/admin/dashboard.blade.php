@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+@include('admin.layouts.message')
 <div class="row">
     <div class="col-lg-3 col-sm-6">
         <div class="card">

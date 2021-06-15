@@ -74,5 +74,13 @@ class DatabaseSeeder extends Seeder
             'quantity' => 3,
             'price' => 4000
         ]);
+        // Dummy Admin User
+        \App\Models\AdminUser::create([
+
+            'name' => 'Khayrul Shanto',
+            'email' => 'admin@mail.com',
+            'password' => bcrypt('Password'),
+
+        ]);
     }
 }
