@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -41,3 +42,7 @@ Route::prefix('admin')->group(function(){
     Route::post('/login',[AdminUserController::class, 'store'])->name('login.store');
 
 });
+
+
+// FrontEnd Route
+Route::get('/',[HomeController::class, 'index']);
